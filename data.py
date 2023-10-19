@@ -1,12 +1,22 @@
-import pyodbc
-
+# import pyodbc
+import psycopg2
 
 
 
 # project Class 
 class ProjectDatabase:
     def __init__(self):
-        self.conn = pyodbc.connect('DRIVER={SQL Server};SERVER=IN-TUSHARLAKHE\SQLEXPRESS;DATABASE=cafe;')
+        # self.conn = pyodbc.connect('DRIVER={SQL Server};SERVER=IN-TUSHARLAKHE\SQLEXPRESS;DATABASE=cafe;')
+        #self.cursor = self.conn.cursor()
+        # self.conn= pyodbc.connect('DRIVER={PostgreSQL };Server=KRIS;Port=5432;Database=KRISDB;User ID=postgres;Password="AxBqYuXEl(k3&VA&zDe@5SpUO--EhgXB";String Types=Unicode')
+        # self.conn=pyodbc.connect(connstring='postgresql://postgres:AxBqYuXEl(k3&VA&zDe@5SpUO--EhgXB@52.14.162.233:5432/KRISDB')
+        # self.conn = pyodbc.connect('DRIVER={SQL Server};SERVER=IN-TUSHARLAKHE\SQLEXPRESS;DATABASE=KRISDB;')
+        self.conn = psycopg2.connect(user = "postgres",
+                                     password = "AxBqYuXEl(k3&VA&zDe@5SpUO--EhgXB",
+                                     host = "52.14.162.233",
+                                     port = "5432",
+                                     database = "KRISDB") 
+                                     
         self.cursor = self.conn.cursor()
 
 # To return all the Information from Project table
@@ -31,10 +41,19 @@ class ProjectDatabase:
                 prod_dict["project_description"] = row[2]
                 result.append(prod_dict)       
         return result
+        # cursor.close()
+        # conn.close()
 # Asset class    
 class AssetDatabase:
     def __init__(self):
-        self.conn = pyodbc.connect('DRIVER={SQL Server};SERVER=IN-TUSHARLAKHE\SQLEXPRESS;DATABASE=cafe;')
+        #self.conn = pyodbc.connect('DRIVER={SQL Server};SERVER=IN-TUSHARLAKHE\SQLEXPRESS;DATABASE=cafe;')
+        #self.conn= pyodbc.connect('DRIVER={PostgreSQL };Server=KRIS;Port=5432;Database=KRISDB;User ID=postgres;Password=AxBqYuXEl\(k3&VA&zDe@5SpUO--EhgXB;String Types=Unicode')
+        # self.conn=pyodbc.connect(connstring='postgresql://postgres:AxBqYuXEl(k3&VA&zDe@5SpUO--EhgXB@52.14.162.233:5432/KRISDB')
+        self.conn = psycopg2.connect(user = "postgres",
+                                     password = "AxBqYuXEl(k3&VA&zDe@5SpUO--EhgXB",
+                                     host = "52.14.162.233",
+                                     port = "5432",
+                                     database = "KRISDB")
         self.cursor = self.conn.cursor()
 
 # To return all the Information from Asset table
@@ -71,7 +90,14 @@ class AssetDatabase:
 # Need Class
 class NeedDatabase:
     def __init__(self):
-        self.conn = pyodbc.connect('DRIVER={SQL Server};SERVER=IN-TUSHARLAKHE\SQLEXPRESS;DATABASE=cafe;')
+        #self.conn = pyodbc.connect('DRIVER={SQL Server};SERVER=IN-TUSHARLAKHE\SQLEXPRESS;DATABASE=cafe;')
+        #self.conn= pyodbc.connect('DRIVER={PostgreSQL };Server=KRIS;Port=5432;Database=KRISDB;User ID=postgres;Password=AxBqYuXEl\(k3&VA&zDe@5SpUO--EhgXB;String Types=Unicode')
+        # self.conn=pyodbc.connect(connstring='postgresql://postgres:AxBqYuXEl(k3&VA&zDe@5SpUO--EhgXB@52.14.162.233:5432/KRISDB')
+        self.conn = psycopg2.connect(user = "postgres",
+                                     password = "AxBqYuXEl(k3&VA&zDe@5SpUO--EhgXB",
+                                     host = "52.14.162.233",
+                                     port = "5432",
+                                     database = "KRISDB")
         self.cursor = self.conn.cursor()
 
 # To return all the Information from Need table
